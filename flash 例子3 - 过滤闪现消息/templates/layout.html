@@ -1,0 +1,31 @@
+<!doctype html>
+<!-- 这里是基础模板，等下 login 和 index 都会继承本模板 -->
+<title>My Application</title>
+<!-- 获取到反馈的消息，并带上自定义分类 -->
+{% with messages = get_flashed_messages(with_categories=true, category_filter=["message"]) %}
+    {% if messages %}
+        <ul class=flashes>
+        {% for category, message in messages %}
+            <li class="messages">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+ <!-- 这里我们加上过滤器，只接受 error 类型的消息  -->
+ <!-- 这样做能方便地把不同类型的消息用不同的模板来处理 -->
+{% with errors = get_flashed_messages(with_categories=true, category_filter=["error"]) %}
+	{% if errors %}
+		<div class="alert-message block-message error">
+			<a class="close" href="#">×</a>
+			<ul>
+				{% for msg in errors %}
+					<li>{{ msg }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+{% endwith %}
+
+{% block body %}
+{% endblock %}

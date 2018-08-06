@@ -1,0 +1,8 @@
+<!-- 继承 layout 模板 -->
+{% extends "layout.html" %}
+
+<!-- 替换模板做的 block body 部分 -->
+{% block body %}
+    <h1>Overview</h1>
+    <p><a href="{{ url_for('login') }}">登录</a>
+{% endblock %}

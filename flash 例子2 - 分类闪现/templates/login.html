@@ -1,0 +1,23 @@
+<!-- 继承 layout 模板 -->
+{% extends "layout.html" %}
+
+<!-- 替换模板做的 block body 部分 -->
+{% block body %}
+
+    <h1>Login</h1>
+    <!-- 如果有错误信息 -->
+    {% if error %}
+        <p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+
+  <form action="" method=post>
+    <dl>
+        <dt>用户名:<dd>
+            <input type=text name=username value="{{request.form.username }}">
+        <dt>密码:<dd>
+            <input type=password name=password>
+    </dl>
+        <input type=submit value=Login>
+  </form>
+
+{% endblock %}
